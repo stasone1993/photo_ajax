@@ -47,6 +47,18 @@ class PhotoUpload {
 }
 
 $pu = new PhotoUpload();
-if ($pu->validate()){
+if ($pu->validate()) {
     $pu->upload()->addToDB();
 }
+
+$query = "SELECT * FROM images";
+$dbh = new PDO('mysql:host=localhost;dbname=gallery', 'root', '');
+$images = array();
+foreach ($dbh->query($query) as $row) {
+    $images[] = array(
+        'id' => $row['id'],
+        'src' => $row['src'],
+        );
+}
+header('Content-Type: application/json');
+echo json_encode($images);
