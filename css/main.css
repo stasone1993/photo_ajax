@@ -1,0 +1,10 @@
+.gallery{
+    width:80%;
+    height:400px;
+    margin:10px auto;
+    display:flex;
+    align-items: center;
+    align-content: center;
+    border: 1px solid #000;
+    border-radius: 10px;
+}
